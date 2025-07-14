@@ -49,13 +49,13 @@ streamlit run streamlit_app.py
 flowchart TD
     A[Streamlit: User Enters URL] --> B[Streamlit calls generate_reddit_persona()]
     B --> C[RedditScraper.scrape_user_data()]
-    C --> D[Reddit API (posts/comments)]
-    D --> E[RedditPost List + Metadata]
+    C --> D[Reddit API: Fetch Posts & Comments]
+    D --> E[Structured RedditPost List + Metadata]
     E --> F[PersonaGenerator.generate_persona()]
-    F --> G[Ollama (Qwen2.5:0.5b) Runs Locally]
-    G --> H[LLM Persona Text]
+    F --> G[Ollama: Qwen2.5:0.5b Runs Locally]
+    G --> H[LLM Generates Persona Text]
     H --> I[PersonaManager.save_persona()]
-    I --> J[Streamlit Shows Report + Plots]
+    I --> J[Streamlit Displays Report + Charts]
 ```
 
 
