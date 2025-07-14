@@ -61,7 +61,7 @@ flowchart LR
     F --> F1[Text File]
     F --> F2[Web Dashboard]
     
-    style A fill:#fff8e1
+    style A fill:#f1f8e9
     style D fill:#fff8e1
     style F fill:#f1f8e9
 ```
