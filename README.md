@@ -1,6 +1,6 @@
 #  Reddit Persona Generator
 
-A powerful AI-powered tool to analyze any public Reddit user and generate a structured psychological persona using open-source LLMs. Built with **Streamlit**, **Ollama**, and **Plotly**, this app scrapes user posts/comments and uses Qwen2.5 to summarize behavior, interests, and personality traits — all locally, without sending data to the cloud.
+A powerful AI-powered tool to analyze any public Reddit user and generate a structured psychological persona using open-source LLMs. Built with **Streamlit**, **Ollama**, and **Plotly**, this app scrapes user posts/comments and uses Qwen2.5 to summarize behavior, interests, and personality traits  all locally, without sending data to the cloud.
 
 ##  Features
 
@@ -44,7 +44,9 @@ streamlit run streamlit_app.py
 3. Click "Analyze Profile"
 4. View the generated persona
 
-###flowchart TD
+### FLOW
+```mermaid
+flowchart TD
     A[Streamlit: User Enters URL] --> B[Streamlit calls generate_reddit_persona()]
     B --> C[RedditScraper.scrape_user_data()]
     C --> D[Reddit API (posts/comments)]
@@ -54,6 +56,7 @@ streamlit run streamlit_app.py
     G --> H[LLM Persona Text]
     H --> I[PersonaManager.save_persona()]
     I --> J[Streamlit Shows Report + Plots]
+```
 
 
 ## Output
@@ -73,14 +76,10 @@ Example output saved as `persona_username_timestamp.txt`
 - 4GB RAM for the AI model
 - Internet connection for Reddit scraping
 
-## Notes
+## Note
 
 - Only works with public Reddit profiles
 - All processing done locally (no external APIs)
 - Analysis quality depends on how active the user is
 - Respects Reddit's rate limits
 
-
-## License
-
-Educational use only. Respect Reddit's terms of service.
