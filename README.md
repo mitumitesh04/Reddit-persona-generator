@@ -63,7 +63,6 @@ flowchart LR
     style A fill:#e3f2fd
     style D fill:#fff8e1
     style F fill:#f1f8e9
-
 ## Output
 
 Generates a text file with:
