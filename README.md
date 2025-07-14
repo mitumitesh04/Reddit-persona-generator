@@ -45,19 +45,24 @@ streamlit run streamlit_app.py
 4. View the generated persona
 
 ### FLOW
-```mermaid
-flowchart TD
-    A[Streamlit: User Enters URL] --> B[Streamlit calls generate_reddit_persona()]
-    B --> C[RedditScraper.scrape_user_data()]
-    C --> D[Reddit API: Fetch Posts & Comments]
-    D --> E[Structured RedditPost List + Metadata]
-    E --> F[PersonaGenerator.generate_persona()]
-    F --> G[Ollama: Qwen2.5:0.5b Runs Locally]
-    G --> H[LLM Generates Persona Text]
-    H --> I[PersonaManager.save_persona()]
-    I --> J[Streamlit Displays Report + Charts]
-```
-
+flowchart LR
+    A[Reddit URL] --> B[Scrape Data]
+    B --> C[Process Posts]
+    C --> D[AI Analysis]
+    D --> E[Generate Persona]
+    E --> F[Save & Display]
+    
+    B --> B1[Posts]
+    B --> B2[Comments]
+    
+    D --> D1[Qwen2.5:0.5b]
+    
+    F --> F1[Text File]
+    F --> F2[Web Dashboard]
+    
+    style A fill:#e3f2fd
+    style D fill:#fff8e1
+    style F fill:#f1f8e9
 
 ## Output
 
