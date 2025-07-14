@@ -45,29 +45,26 @@ streamlit run streamlit_app.py
 4. View the generated persona
 
 ### FLOW
+```mermaid
 flowchart LR
     A[Reddit URL] --> B[Scrape Data]
     B --> C[Process Posts]
     C --> D[AI Analysis]
     D --> E[Generate Persona]
-    E --> F[Save Display]
+    E --> F[Save & Display]
     
     B --> B1[Posts]
     B --> B2[Comments]
-    B1 --> C
-    B2 --> C
     
-    D --> D1[Qwen25]
-    D1 --> E
+    D --> D1[Qwen2.5:0.5b]
     
     F --> F1[Text File]
-    F --> F2[Dashboard]
-    F1 --> G[Output]
-    F2 --> G
+    F --> F2[Web Dashboard]
     
     style A fill:#e3f2fd
     style D fill:#fff8e1
     style F fill:#f1f8e9
+```
 
 ## Output
 
