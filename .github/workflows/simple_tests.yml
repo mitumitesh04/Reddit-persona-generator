@@ -1,0 +1,50 @@
+name: Simple Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Step 1: Get the code
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    # Step 2: Setup Python
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install streamlit pytest selenium requests
+        pip install webdriver-manager  # Manages Chrome driver automatically
+    
+    # Step 4: Install Chrome for Selenium
+    - name: Install Chrome
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+    
+    # Step 5: Run unit tests
+    - name: Run unit tests
+      run: |
+        pytest test_backend.py -v
+    
+    # Step 6: Run UI tests (headless)
+    - name: Run UI tests
+      run: |
+        # Start virtual display for headless browser
+        export DISPLAY=:99
+        sudo Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
+        
+        # Run Selenium tests
+        pytest test_ui.py -v
